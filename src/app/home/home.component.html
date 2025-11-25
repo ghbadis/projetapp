@@ -1,0 +1,59 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4 text-primary">{{ title }}</h1>
+
+  <div class="card shadow-lg">
+    <div class="card-header bg-success text-white text-center">
+      <h4 class="mb-0">Liste des Produits</h4>
+    </div>
+
+    <div class="table-responsive">
+      <input type="text" placeholder="search by name" class="form-control my-3" [(ngModel)]="nameFilter">
+
+
+      <table class="table table-hover table-striped align-middle mb-0">
+        <thead class="table-success">
+          <tr class="text-center">
+            
+            <th scope="col">🛒 Nom du produit</th>
+            <th scope="col">💰 Prix</th>
+            <th scope="col">📦 Quantité</th>
+            <th scope="col">❤️ Nombre de Likes</th>
+            <th scope="col">👍 Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products" class="text-center">
+           <ng-container *ngIf="!nameFilter || product.name.toLowerCase().includes(nameFilter.toLowerCase())">
+            
+
+            <td><strong>{{ product.name }}</strong></td>
+            <td>{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+              <span class="badge bg-danger px-3 py-2">
+                {{ product.nbrLike }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-outline-danger btn-sm" (click)="likeProduct(product)">
+                ❤️ Like
+              </button>
+              <button class="btn btn-outline-primary btn-sm ml-2" (click)="buyProduct(product)" [disabled]="product.quantity === 0">
+                🛒 Buy
+              </button>
+            </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+     
+    </div>
+  </div>
+
+  <button class="btn btn-success mt-3" (click)="save()">
+    💾 Save
+  </button>
+</div>
+
+<input type="text" placeholder="choisir color "[(ngModel)]="color">
+<p [style.background]="color">proprety binding</p>
