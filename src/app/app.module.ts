@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { ListSuggestionComponent } from './core/list-suggestion/list-suggestion.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 
@@ -17,8 +16,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     FooterComponent,
     NavbarComponent,
-    NavbarComponent,
-    ListSuggestionComponent,
     NotFoundComponent
   ],
   imports: [
