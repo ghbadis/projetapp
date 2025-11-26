@@ -61,8 +61,8 @@ export class ListSuggestionComponent {
   favorites: Suggestion[] = []; 
 
   isAccepted(status: string): boolean {
-    return status === 'acceptee';
-  }
+  return status === 'acceptee' || status === 'en_attente';
+}
 
   likeSuggestion(suggestion: Suggestion): void {
     suggestion.likes++;

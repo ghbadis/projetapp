@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ListSuggestionComponent } from './core/list-suggestion/list-suggestion.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListSuggestionComponent } from './core/list-suggestion/list-suggestion.
     FooterComponent,
     NavbarComponent,
     NavbarComponent,
-    ListSuggestionComponent
+    ListSuggestionComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
