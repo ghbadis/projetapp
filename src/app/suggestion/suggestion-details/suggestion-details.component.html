@@ -1,0 +1,60 @@
+<div class="container my-4" *ngIf="suggestion">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Détails de la suggestion</h3>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{ suggestion.title }}</h4>
+      <hr>
+      
+      <div class="mb-3">
+        <strong>Catégorie :</strong>
+        <span class="badge bg-secondary ms-2">{{ suggestion.category }}</span>
+      </div>
+
+      <div class="mb-3">
+        <strong>Description :</strong>
+        <p class="mt-2">{{ suggestion.description }}</p>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Date :</strong>
+          <p>{{ suggestion.date | date:'dd/MM/yyyy' }}</p>
+        </div>
+        <div class="col-md-6">
+          <strong>Statut :</strong>
+          <span class="badge ms-2" 
+                [ngClass]="{
+                  'bg-success': suggestion.status === 'acceptee',
+                  'bg-danger': suggestion.status === 'refusee',
+                  'bg-warning': suggestion.status === 'en_attente'
+                }">
+            {{ suggestion.status }}
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <strong>Nombre de likes :</strong>
+        <span class="badge bg-info ms-2">👍 {{ suggestion.likes }}</span>
+      </div>
+
+      <div class="mt-4">
+        <button class="btn btn-secondary" routerLink="/suggestion">
+          ← Retour à la liste
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-4" *ngIf="!suggestion">
+  <div class="alert alert-warning">
+    <h4>Suggestion non trouvée</h4>
+    <p>La suggestion demandée n'existe pas ou a été supprimée.</p>
+    <button class="btn btn-secondary" routerLink="/suggestion">
+      ← Retour à la liste
+    </button>
+  </div>
+</div>
