@@ -1,0 +1,55 @@
+<h2 class="form-title">Ajouter une nouvelle suggestion</h2>
+
+<form [formGroup]="suggestionForm" (ngSubmit)="submitForm()" class="suggestion-form">
+
+  <!-- Titre -->
+  <div class="form-group">
+    <label>Titre</label>
+    <input type="text" formControlName="title" placeholder="Titre de la suggestion">
+    <div class="error" *ngIf="suggestionForm.get('title')?.touched && suggestionForm.get('title')?.invalid">
+      <small *ngIf="suggestionForm.get('title')?.errors?.['required']">Le titre est obligatoire.</small>
+      <small *ngIf="suggestionForm.get('title')?.errors?.['minlength']">Minimum 5 caractères.</small>
+      <small *ngIf="suggestionForm.get('title')?.errors?.['pattern']">
+        Doit commencer par une majuscule et contenir uniquement des lettres.
+      </small>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label>Description</label>
+    <textarea formControlName="description" placeholder="Décrivez votre suggestion"></textarea>
+    <div class="error" *ngIf="suggestionForm.get('description')?.touched && suggestionForm.get('description')?.invalid">
+      <small *ngIf="suggestionForm.get('description')?.errors?.['required']">La description est obligatoire.</small>
+      <small *ngIf="suggestionForm.get('description')?.errors?.['minlength']">Minimum 30 caractères.</small>
+    </div>
+  </div>
+
+  <!-- Catégorie -->
+  <div class="form-group">
+    <label>Catégorie</label>
+    <select formControlName="category">
+      <option value="">-- Choisir une catégorie --</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <div class="error" *ngIf="suggestionForm.get('category')?.touched && suggestionForm.get('category')?.invalid">
+      <small>La catégorie est obligatoire.</small>
+    </div>
+  </div>
+
+  <!-- Date -->
+  <div class="form-group">
+    <label>Date</label>
+    <input type="text" formControlName="date" readonly>
+  </div>
+
+  <!-- Status -->
+  <div class="form-group">
+    <label>Status</label>
+    <input type="text" formControlName="status" readonly>
+  </div>
+
+  <button type="submit" [disabled]="suggestionForm.invalid" class="submit-btn">
+    Soumettre
+  </button>
+</form>

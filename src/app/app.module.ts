@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SuggestionFormComponent } from './features/suggestions/formulaire/suggestion-form.component';
 
 
 @NgModule({
@@ -16,12 +17,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     FooterComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SuggestionFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
